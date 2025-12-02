@@ -5,7 +5,7 @@ permissions:
   id-token: write
   contents: read
 env:
-  image_repo: rituacr678.azurecr.io/todoui:v1
+  image_repo:  rituacr678.azurecr.io/todoui
   image_version: v1
 jobs:
   buildAndPush:
@@ -15,40 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.0      
       - name: image build
-        run: docker build -t rituacr678.azurecr.io/todoui:v1 .
-      - name: Azure Login
-        uses: Azure/login@v2.3.0
-        with:
-          name: buildAndPush
-on:
-  workflow_dispatch:
-permissions:
-  id-token: write
-  contents: read
-env:
-  image_repo: rituacr678.azurecr.io/todoui:v1
-  image_version: v1
-jobs:
-  buildAndPush:
-    name: build and push to acr
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6.0.0      
-      - name: image build
-        run: docker build -t rituacr678.azurecr.io/todoui:v1 .
+        run: docker build -t  rituacr678.azurecr.io/todoui:v1 .
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
           client-id: "cf24936b-bab1-4bd5-a84a-f40b4e9661cf"
-          TENANT_ID: "50b4c848-d426-4de1-ad70-fb13c2692bc9"
-          SUBSCRIPTION_ID: "2725a90a-ca7e-4474-afbb-38294afb9db3"
+          tenant-id: "50b4c848-d426-4de1-ad70-fb13c2692bc9"
+          subscription-id: "2725a90a-ca7e-4474-afbb-38294afb9db3"
       - name: acr login
         run: az acr login --name rituacr678
       - name: push to acr
-        run: docker push  rituacr678.azurecr.io/todoui:v1: "cf24936b-bab1-4bd5-a84a-f40b4e9661cf"
-       TENANT_ID: "50b4c848-d426-4de1-ad70-fb13c2692bc9"
-          SUBSCRIPTION_ID: "2725a90a-ca7e-4474-afbb-38294afb9db3"
-      - name: acr login
-        run: az acr login --name rituacr678
-      - name: push to acr  rituacr678.azurecr.io/todoui:v1
+        run: docker push rituacr678.azurecr.io/todoui:v1
