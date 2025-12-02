@@ -5,7 +5,7 @@ permissions:
   id-token: write
   contents: read
 env:
-  image_repo: heroacr007.azurecr.io/todo-ui
+  image_repo: rituacr678.azurecr.io/todoui:v1
   image_version: v1
 jobs:
   buildAndPush:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.0      
       - name: image build
-        run: docker build -t $image_repo:$image_version .
+        run: docker build -t rituacr678.azurecr.io/todoui:v1 .
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
@@ -26,7 +26,7 @@ permissions:
   id-token: write
   contents: read
 env:
-  image_repo: heroacr007.azurecr.io/todo-ui
+  image_repo: rituacr678.azurecr.io/todoui:v1
   image_version: v1
 jobs:
   buildAndPush:
