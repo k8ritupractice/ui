@@ -36,20 +36,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.0      
       - name: image build
-        run: docker build -t $image_repo:$image_version .
+        run: docker build -t rituacr678.azurecr.io/todoui:v1 .
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
-          client-id: ""
-          tenant-id: "5c09c46b-8034-4002-8418-77ce48be97db"
-          subscription-id: "b4461466-1e6b-4be2-bb70-1e96a72a41c8"
+          client-id: "cf24936b-bab1-4bd5-a84a-f40b4e9661cf"
+          TENANT_ID: "50b4c848-d426-4de1-ad70-fb13c2692bc9"
+          SUBSCRIPTION_ID: "2725a90a-ca7e-4474-afbb-38294afb9db3"
       - name: acr login
-        run: az acr login --name heroacr007
+        run: az acr login --name rituacr678
       - name: push to acr
-        run: docker push $image_repo:$image_version: "e8c830a1-d750-4619-a0d0-822aa45f1086"
-          tenant-id: "5c09c46b-8034-4002-8418-77ce48be97db"
-          subscription-id: "b4461466-1e6b-4be2-bb70-1e96a72a41c8"
+        run: docker push  rituacr678.azurecr.io/todoui:v1: "cf24936b-bab1-4bd5-a84a-f40b4e9661cf"
+       TENANT_ID: "50b4c848-d426-4de1-ad70-fb13c2692bc9"
+          SUBSCRIPTION_ID: "2725a90a-ca7e-4474-afbb-38294afb9db3"
       - name: acr login
-        run: az acr login --name heroacr007
-      - name: push to acr
-        run: docker push $image_repo:$image_version
+        run: az acr login --name rituacr678
+      - name: push to acr  rituacr678.azurecr.io/todoui:v1
